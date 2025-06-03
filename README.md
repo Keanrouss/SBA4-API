@@ -1,3 +1,5 @@
+This assignment is based on using API data to create a full functioning software.
+
 20%: Use the fetch API or Axios to communicate with an
      external web API. Use the data provided by this API
      to populate your application’s content and features.
