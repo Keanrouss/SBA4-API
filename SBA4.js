@@ -17,37 +17,44 @@
 
 //getdata()
 async function getdata() {
-const url = ('https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc');
-const options = {
-	method: 'GET', //none of the API were working for me. got from RapiAPI and it came with GET. Not 100% familiar
-	headers: {
-		'x-rapidapi-key': '236e810a85msh3c07efd6077ebc7p1e1626jsn0a492c5f13d4',
-		'x-rapidapi-host': 'anime-db.p.rapidapi.com'
+//const url = ('https://dattebayo-api.onrender.com');
+//const options = {
+	//method: 'GET', //none of the API were working for me. got from RapiAPI and it came with GET. Not 100% familiar
+//};
+
+//try {
+    const response = await fetch('https://dattebayo-api.onrender.com/characters');
+	const data= await response.json()
+    const characters = data.characters
+
+    console.log(characters)
+         for (let character of characters) {
+            
+            //console.log(characters.characters[i].name)
+            //console.log(characters.characters[i].name)
+            // data.[2].name
+             }
+         // data.data[2].title
+   
+             // if (ranking > 9000) {
+            //console.log('Favorite episode to watch later!')
+      //  } else if(ranking < 7000) {
+           // console.log("Just a terrible video!")
+      //  }
+   // }
+//} catch (error) {
+	//console.error(error);
+//}
 	}
-};
 
-try {
-    const response = await fetch(url , options);
-	const data = await response.json();
-    let ranking = data.data[0].ranking
-    for (let i = 0; i < 9; i++) {
-             ranking += data.data[i].ranking
-             console.log(ranking)
-              if (ranking > 9000) {
-            console.log('Favorite episode to watch later!')
-        } else if(ranking < 7000) {
-            console.log("Just a terrible video!")
-        }
-    }
-} catch (error) {
-	console.error(error);
-}
-}
-getdata()
+let button = document.querySelector(".click")
+button.addEventListener("click", getdata)
+//getdata()
 
 
 
-
+// for (let i = 0; i < 9; i++) {
+             //ranking += data.data[i].ranking
 //console.log(ranking)
         //if (ranking > 9000) {
            // console.log('Favorite episode to watch later!')
