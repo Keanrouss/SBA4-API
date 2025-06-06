@@ -3,23 +3,21 @@ async function getdata() {
         const response = await fetch('https://dattebayo-api.onrender.com/characters');
         const data = await response.json()
         const characters = data.characters
-
-        for (let character of characters) {
-        }
-        const userinput = ""
-        const selectedcharacter = characters.some(char => char.name.toLowerCase() === userinput.toLowerCase)
-        if (userinput) {
+        characters.forEach((value, key) => {
+            let selectcharacter ="characters"
+            if (selectcharacter) {
             console.log("Proper character selected")
-        } else {
-            console.log("Put Naruto anime main characters only")
-        }
+           } else {
+            console.log("Please Select a character")
+           }
+        })    
 
-    } catch (error) {
-        console.error(error);
+        }catch (error) {
+            console.error(error);
+        }
     }
-}
 let button = document.querySelector(".click")
-button.addEventListener("click", getdata)
+    button.addEventListener("click", getdata)
 //getdata()
 
 
