@@ -1,4 +1,4 @@
-import{mainContainer, namebanner, Narutotitle} from "./SBA4.body.js"
+import{mainContainer, namebanner, Narutotitle} from "./SBA4body.js"
 
 mainContainer.style.display= "flex"
 mainContainer.style.display= ""
