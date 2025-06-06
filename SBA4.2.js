@@ -1,1 +1,0 @@
-const charactercontainer = document.createElement('characters.name')
