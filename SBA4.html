@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FinalSBA4</title>
     <script defer src="SBA4.js" type="module"></script>
     <script defer src="SBA4body.js" type="module"></script>
     <script defer src="SBA4bodydesign.js" type="module"></script>
     <link rel="stylesheet" href="SBA4.css">
 </head>
 <h2> Naruto</h2>
+
 <body>
-    <button class="click">
-        Search
-    </button>
-      <div id="character-profile">
-        <!-- <p id="character-name"></p>
-        <p id="character-sex"></p>
-        <p id="character-birthdate"></p>
-        <p id="character-clan"></p>  --> 
-    <input type="text" id="characters">
-    <img src="background-image.jpg" alt=""> 
-     </div>  
+    <select id="CharacterSelection">
+        <option value=""> Choose a character </option>
+    </select>
+    <button class="click"> Search </button>
+    <div id="character-profile" class="singleprofile" style="display: none;"></div>
+    <!-- <input type="text" id="characters"> -->
+    <img src="background-image.jpg" alt="">
+    </div>
+    <div class="info">
+        <div class="info">
+            <h3>Name</h3>
+            <p><strong>Birthday:</strong></p>
+            <p><strong>Clan:</strong></p>
+            <p><strong>Village:</strong></p>
+        </div>
+    </div>
 
 </body>
+
 </html>
