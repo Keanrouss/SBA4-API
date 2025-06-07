@@ -1,100 +1,66 @@
-//all of the character info from HTML to connect in DOM
-let body = document.querySelector("body")
-let selection = document.getElementById('.characterselection');
+import{Selection, profile} from "./SBA4.js"
 
-//let array= []
-//const characterlist = forEach((index) => {
-//})
-//body.appendChild(selection);
-//Title/banner information
-let Narutotitle = document.querySelector('h2')
-Narutotitle.style.display = "flex";
-Narutotitle.style.justifyContent = "center"
-Narutotitle.style.height = "200px"
-let mainContainer = document.createElement('div')
-let namebanner = document.createElement('h2')
-//namebanner.textContent= characters.name 
-mainContainer.appendChild(namebanner)
-//image.src= ""
-//body.appendChild(image)
-
-
-let image = document.createElement('img');
-let divCard = document.createElement('div');
-divCard.appendChild(image);
-image.setAttribute('height', '300');
-image.setAttribute('width', '400');
-body.appendChild(divCard)
-divCard.style.height = '500px'
-divCard.style.width = '400px'
-divCard.style.border = ' 5px solid black'
-divCard.style.backgroundColor = 'white'
-
+let characters = []
+// Click button have to click first before the select drop down menu can display characters.
+//as I was having issues controlling the amount of requests sent out and ended up maxing out requests by 15 apis.
+//Oussama set event on click to help control issue.
 async function getdata() {
     const response = await fetch('https://dattebayo-api.onrender.com/characters');
     const data = await response.json()
-    const characters = data.characters
-    for (let character of characters) {
-        console.log (characters.images[0])
-        console.log(`Name: ${character.name}`);
-        console.log(`Gender: ${character.personal.sex}`);
-        console.log(`Birthdate: ${character.personal.birthdate}`);
-        console.log(`Village: ${character.personal.affiliation[0]}`)
-        console.log(`Clan: ${character.personal.clan}`);
-    }
+    characters = data.characters
+    //for (let character of characters) {
 
-    let array = [] //characters are nestled inside array under the index numbers
-    forEach((index, char) => {
-        let options = document.createElement('option');
-        options.value = index//the value needed
-        options.textContent = char.name
-         image.src = characters[key].images[0]
-        selection.appendChild(options);
-    })
-    let image = document.createElement('img');
-let divCard = document.createElement('div');
-divCard.appendChild(image);
-image.setAttribute('height', '300');
-image.setAttribute('width', '400');
-body.appendChild(divCard)
-divCard.style.height = '500px'
-divCard.style.width = '400px'
-divCard.style.border = ' 5px solid black'
-divCard.style.backgroundColor = 'white'
-    //event 
-    let newselection = document.getElementById('CharacterSelection')
-    CharacterSelection.addEventListener('change', function () {
-        const index = this.value;//from HTML 
-        const singleprofile = document.getElementById('character-profile')
-        if (index ==="") {
-            singleprofile.style.display = 'none'
-            singleprofile.innerHTML = "" //open brackets for incoming input
-            return;
-        } else {
-            console.log (error)
-        }   
-    
-        const singlecharacter = characters[index];
+    const Selection = document.getElementById('CharacterSelection')
+
+    //characters are nestled inside array under the index numbers
+    Selection.innerHTML =''
+        characters.forEach((shinobi, index) => {
+            console.log(shinobi.name)
+            const option = document.createElement('option');
+            option.value = index;//the value needed
+            option.textContent = shinobi.name
+            Selection.appendChild(option);
+        })
+}
+document.querySelector('CharacterSelection').addEventListener('change', function () {
+    const index = this.value;//from HTML 
+    if (index === "")
+        return
+    const shinobi = characters[index];
+    const profile = document.getElementById('singleprofile')
+    //console.log(profile)
 })
-   //const singlecharacter = characters[index];
-    
-    //singleprofile information to display
-     singleprofile.innerHTML = `
-     <img src="${char.images?.[0] || 'default.jpg'}" alt="${char.name}" />
-     <h2>${char.name}</h2>
+//const singlecharacter = characters[index];
+
+//singleprofile information to display
+//some characters images or sex/village/clan. "?" according to w3 and google webbrowsing..avoid code from crashing if 
+//a request is not available
+//'N/A or unkwnown' is to prevent undefined to showed up on profile
+
+profile.innerHTML = `
+  <div class="info">
+  <img src="${shinobi.images?.[0] || ''}" atl="${shinobi.name}">
+    <h2>${shinobi.name}</h2>
+     <p><strong>Gender:</strong> ${shinobi.personal.sex || 'N/A'}</p>
+    <p><strong>Birthday:</strong> ${shinobi.personal.birthdate || 'Unknown'}</p>
+     <p><strong>Birthday:</strong> ${shinobi.personal.affiliation || 'N/A'}</p>
+    <p><strong>Village:</strong> ${shinobi.personal.village || 'Unknown'}</p>
+    <div
 
       `;
-      profile.style.display = 'block';
-
-        
-    
-    
+profile.style.display = 'block';
 
 
-}
 
-let button = document.querySelector(".click")
+
+
+// Click button have to click first before the select drop down menu can display characters.
+//as I was having issues controlling the amount of requests sent out and ended up maxing out requests by 15 apis.
+//Oussama set event on click to help control issue.
+
+let button = document.querySelector(".click") //click to enable drop down menu for shinobi selection
 button.addEventListener("click", getdata)
 //const namebanner = document.createElement("div")
 
-export { mainContainer, selection, body, namebanner, Narutotitle }
+let ninja = setTimeout(shinobi, 2000)
+export {ninja, profile}
