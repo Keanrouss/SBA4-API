@@ -51,7 +51,9 @@ profile.innerHTML = `
 profile.style.display = 'block';
 
 
-
+//most of the data were inside in an array and comming under index number. Spent days trying to work with that but with the click button not controlled
+//kept running into too many requests api error. Changed api 15x until instructor set click button on event.
+//had to change type of loop 4x because couldn't get exactly what I wanted.
 
 
 // Click button have to click first before the select drop down menu can display characters.
